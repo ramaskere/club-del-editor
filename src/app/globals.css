@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #07080c;
-  --bg-elevated: #10131a;
-  --bg-soft: #161b24;
-  --line: rgba(255, 255, 255, 0.1);
-  --text: #f4f6fa;
-  --muted: #9aa3b5;
-  --accent: #b8ff3c;
-  --accent-ink: #0a0e05;
-  --warm: #ff6b4a;
+  --bg: #07040f;
+  --bg-elevated: #100a1c;
+  --bg-soft: #161022;
+  --line: rgba(255, 255, 255, 0.12);
+  --text: #ffffff;
+  --muted: #a8a0b8;
+  --accent: #7c5cff;
+  --accent-hover: #6a4aef;
+  --accent-soft: rgba(124, 92, 255, 0.18);
+  --pink: #e879f9;
+  --gold: #f0b429;
   --background: var(--bg);
   --foreground: var(--text);
 }
@@ -23,8 +25,10 @@
   --color-line: var(--line);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
-  --color-accent-ink: var(--accent-ink);
-  --color-warm: var(--warm);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-pink: var(--pink);
+  --color-gold: var(--gold);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
 }
@@ -45,13 +49,13 @@ body {
 
 ::selection {
   background: color-mix(in srgb, var(--accent) 45%, transparent);
-  color: var(--accent-ink);
+  color: white;
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(1rem);
+    transform: translateY(0.85rem);
   }
   to {
     opacity: 1;
@@ -59,45 +63,71 @@ body {
   }
 }
 
-@keyframes pulse-soft {
+@keyframes pulse-dot {
   0%,
   100% {
     opacity: 1;
+    transform: scale(1);
   }
   50% {
-    opacity: 0.55;
+    opacity: 0.45;
+    transform: scale(0.85);
   }
 }
 
 .animate-rise {
-  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .animate-rise-1 {
-  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
 .animate-rise-2 {
-  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
 }
 
 .animate-rise-3 {
-  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
 }
 
 .dot-live {
-  animation: pulse-soft 1.6s ease-in-out infinite;
+  animation: pulse-dot 1.5s ease-in-out infinite;
 }
 
-.grid-noise {
-  background-image:
-    radial-gradient(ellipse at top, rgba(184, 255, 60, 0.08), transparent 55%),
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size:
-    100% 100%,
-    48px 48px,
-    48px 48px;
+.hero-glow {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 35%, rgba(124, 92, 255, 0.22), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 80%, rgba(232, 121, 249, 0.08), transparent 55%);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #e879f9 0%, #a78bfa 45%, #7c5cff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.35), 0 8px 28px rgba(124, 92, 255, 0.35);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.chip {
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 @media (prefers-reduced-motion: reduce) {

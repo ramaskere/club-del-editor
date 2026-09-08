@@ -8,7 +8,7 @@ export const site = {
   whatsapp: "5491112345678",
   instagram: "clubdeleditor",
   checkoutUrl: "#precio", // reemplazá por Stripe / Hotmart / etc.
-  students: "2.400+",
+  students: "2.400",
   resources: "800+",
   lessons: "40+",
   hours: "18 h",

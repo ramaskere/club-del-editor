@@ -60,7 +60,7 @@ export function FaqList() {
               aria-expanded={isOpen}
               onClick={() => setOpen(isOpen ? null : i)}
             >
-              <span className="font-[family-name:var(--font-display)] text-base font-medium text-white md:text-lg">
+              <span className="text-base font-medium text-white md:text-lg">
                 {item.q}
               </span>
               <span
