@@ -1,14 +1,14 @@
-# Cuero Studio — Landing
+# Club del Editor
 
-Landing page para vender piezas de cuero. Hecha con Next.js y lista para Vercel.
+Landing para vender cursos de edición. Next.js + Vercel.
 
 ## Personalizar
 
-En `src/app/page.tsx`, arriba del archivo:
+En `src/app/page.tsx`:
 
-- `BRAND` — nombre de tu marca
-- `WHATSAPP` — número con código de país, sin `+` (ej: `54911...`)
-- `INSTAGRAM` — usuario sin `@`
+- `BRAND`
+- `WHATSAPP` (código de país, sin `+`)
+- `INSTAGRAM` (sin `@`)
 
 ## Local
 
@@ -17,9 +17,5 @@ npm install
 npm run dev
 ```
 
-## Deploy en Vercel
-
-1. Subí el código a GitHub (ya conectado en este proyecto).
-2. En [vercel.com/new](https://vercel.com/new) importá este repositorio.
-3. Framework: Next.js (detectado automático). Deploy.
-4. Cada push a `main` vuelve a publicar el sitio.
+Sitio en producción: https://club-cueros.vercel.app  
+(Repo: club-cueros — el nombre quedó del setup anterior; el contenido ya es Club del Editor.)

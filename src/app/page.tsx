@@ -1,33 +1,33 @@
 import Image from "next/image";
 
 /** Cambiá estos datos por los tuyos */
-const BRAND = "Cuero Studio";
-const WHATSAPP = "5491112345678"; // sin + ni espacios, ej: 54911...
-const INSTAGRAM = "cuerostudio"; // sin @
+const BRAND = "Club del Editor";
+const WHATSAPP = "5491112345678"; // sin + ni espacios
+const INSTAGRAM = "clubdeleditor"; // sin @
 
-const products = [
+const courses = [
   {
-    name: "Billeteras",
-    copy: "Perfiles limpios, costura firme y cuero que se pone mejor con el uso.",
+    name: "Edición de video",
+    copy: "Del timeline al corte final: ritmo, audio y exportación lista para publicar.",
     image:
-      "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    name: "Cinturones",
-    copy: "Hebillas sólidas y cueros seleccionados para el día a día.",
+    name: "Contenido para redes",
+    copy: "Formatos verticales, ganchos y piezas que se ven profesionales sin rodeos.",
     image:
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    name: "Accesorios",
-    copy: "Porta documentos, llaveros y piezas a medida según tu pedido.",
+    name: "Flujo creativo",
+    copy: "Organización, revisiones y criterio editorial para trabajar más rápido.",
     image:
-      "https://images.unsplash.com/photo-1473187983305-f615310a4e6f?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
 const waLink = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
-  `Hola ${BRAND}, quiero consultar por una pieza de cuero.`
+  `Hola ${BRAND}, quiero info sobre los cursos.`
 )}`;
 
 export default function Home() {
@@ -36,16 +36,16 @@ export default function Home() {
       <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-5 md:px-10">
         <a
           href="#inicio"
-          className="font-[family-name:var(--font-display)] text-sm font-bold tracking-[0.22em] text-white uppercase"
+          className="font-[family-name:var(--font-display)] text-sm font-bold tracking-[0.18em] text-white uppercase"
         >
           {BRAND}
         </a>
         <nav className="flex items-center gap-6 text-sm text-white/85">
-          <a href="#piezas" className="transition hover:text-white">
-            Piezas
+          <a href="#cursos" className="transition hover:text-white">
+            Cursos
           </a>
-          <a href="#oficio" className="hidden transition hover:text-white sm:inline">
-            Oficio
+          <a href="#metodo" className="hidden transition hover:text-white sm:inline">
+            Método
           </a>
           <a
             href={waLink}
@@ -53,7 +53,7 @@ export default function Home() {
             rel="noreferrer"
             className="border border-white/40 px-4 py-2 transition hover:border-white hover:bg-white/10"
           >
-            Pedir
+            Inscribirme
           </a>
         </nav>
       </header>
@@ -64,82 +64,81 @@ export default function Home() {
       >
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <Image
-            src="https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?auto=format&fit=crop&w=2400&q=80"
-            alt="Piezas de cuero artesanal"
+            src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=2400&q=80"
+            alt="Estación de edición de video"
             fill
             priority
             className="hero-media object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/45 to-ink/25" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,transparent_20%,rgba(20,17,15,0.35)_70%)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/30" />
         </div>
 
         <div className="relative w-full px-6 pb-16 pt-36 md:px-10 md:pb-20">
-          <p className="animate-rise font-[family-name:var(--font-display)] text-xs font-semibold tracking-[0.35em] text-brass uppercase">
+          <p className="animate-rise font-[family-name:var(--font-display)] text-xs font-semibold tracking-[0.32em] text-signal uppercase">
             {BRAND}
           </p>
-          <h1 className="animate-rise-delay-1 mt-4 max-w-3xl font-[family-name:var(--font-display)] text-5xl leading-[0.95] font-bold tracking-tight text-white md:text-7xl">
-            Cuero que se usa,
+          <h1 className="animate-rise-delay-1 mt-4 max-w-3xl font-[family-name:var(--font-display)] text-5xl leading-[0.95] font-extrabold tracking-tight text-white md:text-7xl">
+            Editá con
             <br />
-            no que se guarda.
+            criterio, no a ciegas.
           </h1>
           <p className="animate-rise-delay-2 mt-6 max-w-md text-base leading-relaxed font-light text-white/80 md:text-lg">
-            Piezas hechas a mano en cuero genuino. Pedís, elegís el acabado y te
-            llega listo para el día a día.
+            Cursos prácticos para aprender edición de video y contenido, con
+            método claro y resultados publicables.
           </p>
           <div className="animate-rise-delay-3 mt-9 flex flex-wrap items-center gap-4">
             <a
               href={waLink}
               target="_blank"
               rel="noreferrer"
-              className="bg-brass px-7 py-3.5 text-sm font-medium tracking-wide text-ink transition hover:bg-brass-deep hover:text-white"
+              className="bg-signal px-7 py-3.5 text-sm font-medium tracking-wide text-white transition hover:bg-signal-deep"
             >
-              Pedir por WhatsApp
+              Quiero info por WhatsApp
             </a>
             <a
-              href="#piezas"
+              href="#cursos"
               className="group relative px-2 py-3.5 text-sm font-medium text-white"
             >
-              Ver piezas
+              Ver cursos
               <span className="underline-draw absolute inset-x-2 bottom-2 h-px bg-white/80" />
             </a>
           </div>
         </div>
       </section>
 
-      <section id="piezas" className="bg-paper px-6 py-24 md:px-10 md:py-28">
+      <section id="cursos" className="bg-paper px-6 py-24 md:px-10 md:py-28">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-xl">
-            <p className="font-[family-name:var(--font-display)] text-xs font-semibold tracking-[0.3em] text-brass-deep uppercase">
-              Catálogo
+            <p className="font-[family-name:var(--font-display)] text-xs font-semibold tracking-[0.28em] text-signal uppercase">
+              Cursos
             </p>
             <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-ink md:text-5xl">
-              Tres líneas. Una misma materia.
+              Aprendé lo que usás todos los días.
             </h2>
             <p className="mt-4 text-muted">
-              Trabajamos cuero seleccionado, corte a medida y costura a mano o
-              máquina según la pieza.
+              Programas pensados para creadores y editores que quieren subir el
+              nivel sin perder tiempo.
             </p>
           </div>
 
           <ul className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
-            {products.map((product) => (
-              <li key={product.name} className="group">
-                <div className="relative aspect-[4/5] overflow-hidden bg-mist">
+            {courses.map((course) => (
+              <li key={course.name} className="group">
+                <div className="relative aspect-[4/5] overflow-hidden bg-slate">
                   <Image
-                    src={product.image}
-                    alt={product.name}
+                    src={course.image}
+                    alt={course.name}
                     fill
                     className="object-cover transition duration-700 group-hover:scale-[1.04]"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <h3 className="mt-5 font-[family-name:var(--font-display)] text-2xl font-semibold text-ink">
-                  {product.name}
+                  {course.name}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {product.copy}
+                  {course.copy}
                 </p>
               </li>
             ))}
@@ -148,31 +147,30 @@ export default function Home() {
       </section>
 
       <section
-        id="oficio"
+        id="metodo"
         className="relative overflow-hidden bg-ink px-6 py-24 text-white md:px-10 md:py-28"
       >
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-brass/15 blur-3xl"
+          className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-signal/20 blur-3xl"
         />
         <div className="relative mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.1fr_0.9fr] md:items-center">
           <div>
-            <p className="font-[family-name:var(--font-display)] text-xs font-semibold tracking-[0.3em] text-brass uppercase">
-              Oficio
+            <p className="font-[family-name:var(--font-display)] text-xs font-semibold tracking-[0.28em] text-signal uppercase">
+              Método
             </p>
             <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight md:text-5xl">
-              Hecho a mano, sin atajos.
+              Menos teoría suelta. Más práctica guiada.
             </h2>
             <p className="mt-5 max-w-lg text-base leading-relaxed text-white/70">
-              Cada pedido se arma desde el corte. Elegís tono, tamaño y detalles;
-              nosotros cortamos, cosemos y terminamos la pieza para que acompañe
-              años de uso.
+              Cada módulo se apoya en proyectos reales: armás, cortás, revisás y
+              publicás. Salís con piezas en tu portafolio, no solo con apuntes.
             </p>
           </div>
           <div className="relative aspect-[5/4] overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=1400&q=80"
-              alt="Trabajo artesanal en cuero"
+              src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1400&q=80"
+              alt="Proceso creativo de edición"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 45vw"
@@ -181,18 +179,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-stone px-6 py-24 md:px-10 md:py-28">
+      <section className="bg-slate px-6 py-24 md:px-10 md:py-28">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-10 md:flex-row md:items-end">
           <div className="max-w-xl">
-            <p className="font-[family-name:var(--font-display)] text-xs font-semibold tracking-[0.3em] text-brass-deep uppercase">
-              Encargos
+            <p className="font-[family-name:var(--font-display)] text-xs font-semibold tracking-[0.28em] text-signal uppercase">
+              Inscripción
             </p>
             <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-ink md:text-5xl">
-              Contame qué necesitás.
+              Empezá cuando quieras.
             </h2>
             <p className="mt-4 text-muted">
-              Escribime por WhatsApp con la pieza, el color y el uso. Te paso
-              tiempos y precio.
+              Escribime y te paso fechas, precios y el curso que mejor encaja
+              con tu nivel.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -200,7 +198,7 @@ export default function Home() {
               href={waLink}
               target="_blank"
               rel="noreferrer"
-              className="bg-ink px-7 py-3.5 text-sm font-medium text-white transition hover:bg-oxblood"
+              className="bg-ink px-7 py-3.5 text-sm font-medium text-white transition hover:bg-signal"
             >
               WhatsApp
             </a>
@@ -218,10 +216,10 @@ export default function Home() {
 
       <footer className="border-t border-ink/10 bg-paper px-6 py-8 md:px-10">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-[family-name:var(--font-display)] tracking-[0.2em] text-ink uppercase">
+          <p className="font-[family-name:var(--font-display)] tracking-[0.16em] text-ink uppercase">
             {BRAND}
           </p>
-          <p>© {new Date().getFullYear()} · Cuero genuino · Hecho a mano</p>
+          <p>© {new Date().getFullYear()} · Cursos de edición</p>
         </div>
       </footer>
     </main>
