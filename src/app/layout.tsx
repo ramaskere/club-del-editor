@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
-import { Archivo, Manrope } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const archivo = Archivo({
+const display = Space_Grotesk({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["500", "600", "700"],
 });
 
-const manrope = Manrope({
+const body = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Club del Editor — Cursos de edición",
+  title:
+    "Club del Editor — Aprendé edición viral y cobrá más por tus videos",
   description:
-    "Aprendé a editar video y contenido con claridad. Cursos prácticos del Club del Editor.",
+    "Academia de edición con clases paso a paso, recursos descargables, comunidad y acceso de por vida. Un solo pago.",
   openGraph: {
     title: "Club del Editor",
-    description: "Cursos de edición para crear con criterio.",
+    description:
+      "Aprendé edición viral, descargá recursos y editá más rápido. Acceso de por vida.",
     locale: "es_AR",
     type: "website",
   },
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${archivo.variable} ${manrope.variable} h-full`}>
+    <html lang="es" className={`${display.variable} ${body.variable} h-full`}>
       <body className="min-h-full antialiased">{children}</body>
     </html>
   );

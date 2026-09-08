@@ -1,27 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #0e1218;
-  --paper: #f6f7f9;
-  --slate: #e8ebf0;
-  --signal: #e11d48;
-  --signal-deep: #be123c;
-  --steel: #3d4a5c;
-  --muted: #6a7383;
-  --background: var(--paper);
-  --foreground: var(--ink);
+  --bg: #07080c;
+  --bg-elevated: #10131a;
+  --bg-soft: #161b24;
+  --line: rgba(255, 255, 255, 0.1);
+  --text: #f4f6fa;
+  --muted: #9aa3b5;
+  --accent: #b8ff3c;
+  --accent-ink: #0a0e05;
+  --warm: #ff6b4a;
+  --background: var(--bg);
+  --foreground: var(--text);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-ink: var(--ink);
-  --color-paper: var(--paper);
-  --color-slate: var(--slate);
-  --color-signal: var(--signal);
-  --color-signal-deep: var(--signal-deep);
-  --color-steel: var(--steel);
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-soft: var(--bg-soft);
+  --color-line: var(--line);
   --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-warm: var(--warm);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
 }
@@ -35,20 +38,20 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--signal) 30%, transparent);
-  color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 45%, transparent);
+  color: var(--accent-ink);
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(1.25rem);
+    transform: translateY(1rem);
   }
   to {
     opacity: 1;
@@ -56,56 +59,53 @@ body {
   }
 }
 
-@keyframes ken {
-  from {
-    transform: scale(1.08);
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
   }
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes draw {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
+  50% {
+    opacity: 0.55;
   }
 }
 
 .animate-rise {
-  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.animate-rise-delay-1 {
-  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+.animate-rise-1 {
+  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
 }
 
-.animate-rise-delay-2 {
-  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+.animate-rise-2 {
+  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
 }
 
-.animate-rise-delay-3 {
-  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+.animate-rise-3 {
+  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
 }
 
-.hero-media {
-  animation: ken 16s ease-out forwards;
+.dot-live {
+  animation: pulse-soft 1.6s ease-in-out infinite;
 }
 
-.underline-draw {
-  transform-origin: left center;
-  animation: draw 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+.grid-noise {
+  background-image:
+    radial-gradient(ellipse at top, rgba(184, 255, 60, 0.08), transparent 55%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    48px 48px,
+    48px 48px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-rise,
-  .animate-rise-delay-1,
-  .animate-rise-delay-2,
-  .animate-rise-delay-3,
-  .hero-media,
-  .underline-draw {
+  .animate-rise-1,
+  .animate-rise-2,
+  .animate-rise-3,
+  .dot-live {
     animation: none;
   }
 }
