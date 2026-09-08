@@ -1,18 +1,20 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { Countdown } from "@/components/Countdown";
 import { FaqList } from "@/components/FaqList";
 import { StickyCta } from "@/components/StickyCta";
-import { checkoutLabel, site, waLink } from "@/lib/site";
+import { TrustBadges, TrustLine } from "@/components/TrustLine";
+import { checkoutLabel, site, stackTotal, waLink } from "@/lib/site";
 
 const brands = [
-  "Víctor Heras",
-  "Julian Alborna",
-  "Sensei",
-  "Dollar Dorado",
-  "Victor Valdivia",
-  "Conquerblocks",
-  "Lawtips",
-  "Adrià Solà",
+  "Creadores",
+  "Agencias",
+  "YouTubers",
+  "TikTok",
+  "Reels",
+  "Shorts",
+  "Marcas",
+  "Freelancers",
 ];
 
 const showcaseCards = [
@@ -167,15 +169,20 @@ function Cta({
   href = site.checkoutUrl,
   children = checkoutLabel,
   className = "",
+  showTrust = false,
 }: {
   href?: string;
   children?: ReactNode;
   className?: string;
+  showTrust?: boolean;
 }) {
   return (
-    <a href={href} className={`btn-primary px-6 py-3.5 text-sm ${className}`}>
-      {children}
-    </a>
+    <div className={showTrust ? "inline-flex flex-col items-center gap-2" : "contents"}>
+      <a href={href} className={`btn-primary px-6 py-3.5 text-sm ${className}`}>
+        {children}
+      </a>
+      {showTrust ? <TrustLine /> : null}
+    </div>
   );
 }
 
@@ -183,17 +190,20 @@ export default function Home() {
   return (
     <main className="pb-28">
       {/* Top urgency bar */}
-      <div className="border-b border-white/10 bg-bg-elevated text-center text-xs md:text-sm">
-        <p className="px-4 py-2.5 text-white/85">
-          <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-accent align-middle dot-live" />
-          Actualizaciones de por vida incluidas · Solo hasta el {site.deadline}{" "}
+      <div className="border-b border-accent/30 bg-accent/10">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-2 px-4 py-2.5 md:flex-row md:gap-4">
+          <p className="text-center text-xs text-white/90 md:text-sm">
+            <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-accent align-middle dot-live" />
+            Actualizaciones de por vida · Solo hasta el {site.deadlineLabel}
+          </p>
+          <Countdown className="scale-90" />
           <a
             href={site.checkoutUrl}
-            className="ml-1 font-semibold text-accent underline-offset-2 hover:underline"
+            className="text-xs font-semibold text-accent underline-offset-2 hover:underline md:text-sm"
           >
             Entrar hoy →
           </a>
-        </p>
+        </div>
       </div>
 
       {/* Nav */}
@@ -257,13 +267,23 @@ export default function Home() {
             Unite a la academia de mayor crecimiento en español.
           </div>
 
-          <div className="mt-9">
-            <Cta className="px-8 py-4 text-base">
-              Quiero entrar a {site.brand}
+          <div className="mt-8 w-full max-w-md">
+            <Countdown />
+          </div>
+
+          <div className="mt-6 flex flex-col items-center gap-3">
+            <Cta className="px-8 py-4 text-base" showTrust>
+              Quiero entrar a {site.brand} — {site.price} {site.currency}
             </Cta>
-            <p className="mt-3 text-xs text-muted">
-              Acceso inmediato · Actualizado en ago de 2026
-            </p>
+            <TrustBadges />
+            <a
+              href={waLink("Hola, tengo dudas antes de entrar a la academia")}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-muted underline-offset-2 hover:text-white hover:underline"
+            >
+              ¿Dudas? Escribime por WhatsApp
+            </a>
           </div>
         </div>
       </section>
@@ -619,15 +639,22 @@ export default function Home() {
           ))}
         </div>
         <div className="mt-10 rounded-2xl border border-gold/40 bg-gold/10 p-6 text-center md:p-8">
-          <p className="text-sm text-gold">Solo hasta el {site.deadline}</p>
+          <p className="text-sm text-gold">
+            Solo hasta el {site.deadlineLabel}
+          </p>
           <h3 className="mt-2 text-2xl font-extrabold md:text-3xl">
             Entrá ahora y las actualizaciones son tuyas de por vida
           </h3>
-          <Cta className="mt-6">Quiero mi acceso con updates</Cta>
+          <div className="mt-4">
+            <Countdown className="!justify-center" />
+          </div>
+          <div className="mt-6 flex justify-center">
+            <Cta showTrust>Quiero mi acceso con updates</Cta>
+          </div>
         </div>
       </section>
 
-      {/* 14. PRICING */}
+      {/* 14. PRICING — bloque de compra */}
       <section id="precio" className="bg-bg-elevated py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[1fr_1.05fr] lg:items-start md:px-6">
           <div>
@@ -637,6 +664,26 @@ export default function Home() {
             <h2 className="mt-3 text-3xl font-extrabold tracking-tight md:text-5xl">
               Todo lo que necesitás para convertirte en editor, en un solo lugar
             </h2>
+            <p className="mt-4 text-muted">
+              Si compraras cada parte por separado, el valor supera los{" "}
+              <span className="font-semibold text-white">
+                {stackTotal()} {site.currency}
+              </span>
+              . Hoy lo tenés todo por {site.price} {site.currency}.
+            </p>
+            <ul className="mt-8 space-y-3">
+              {site.valueStack.map((item) => (
+                <li
+                  key={item.label}
+                  className="flex items-center justify-between gap-4 border-b border-white/10 pb-3 text-sm"
+                >
+                  <span className="text-white/85">{item.label}</span>
+                  <span className="font-medium text-muted line-through">
+                    {item.value} {site.currency}
+                  </span>
+                </li>
+              ))}
+            </ul>
             <ul className="mt-8 space-y-3">
               {guarantees.map((g) => (
                 <li key={g} className="flex gap-3 text-sm text-muted">
@@ -646,7 +693,15 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="rounded-3xl border border-accent/50 bg-bg p-6 shadow-[0_0_60px_rgba(124,92,255,0.18)] md:p-8">
+
+          <div
+            id="comprar"
+            className="scroll-mt-28 rounded-3xl border border-accent/50 bg-bg p-6 shadow-[0_0_60px_rgba(124,92,255,0.22)] md:p-8"
+          >
+            <div className="mb-4 rounded-xl border border-gold/40 bg-gold/10 px-3 py-2 text-center text-xs font-medium text-gold">
+              Oferta limitada · Cierra el {site.deadlineLabel}
+            </div>
+            <Countdown className="mb-5 !justify-center" />
             <div className="flex items-end gap-3">
               <span className="text-lg text-muted line-through">
                 {site.priceWas} {site.currency}
@@ -656,7 +711,7 @@ export default function Home() {
               </span>
             </div>
             <p className="mt-2 text-sm text-muted">
-              Pago único · Sin suscripción · Acceso inmediato
+              Pago único · Sin suscripción · Acceso inmediato por email
             </p>
             <ul className="mt-8 space-y-3 border-t border-white/10 pt-6">
               {includes.map((item) => (
@@ -666,12 +721,30 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <Cta className="mt-8 w-full">
+            <a
+              href={site.checkoutUrl}
+              className="btn-primary mt-8 flex w-full px-6 py-4 text-base"
+            >
               Acceder ahora por {site.price} {site.currency}
-            </Cta>
-            <p className="mt-3 text-center text-xs text-muted">
-              7 días de garantía
-            </p>
+            </a>
+            <TrustBadges className="mt-4" />
+            <div className="mt-6 rounded-xl border border-white/10 bg-bg-elevated p-4 text-center">
+              <p className="text-sm font-semibold text-white">
+                Garantía de {site.guaranteeDays} días
+              </p>
+              <p className="mt-1 text-xs leading-relaxed text-muted">
+                Entrá, mirá las clases y si no es para vos, pedís el reembolso.
+                Sin vueltas. El riesgo es nuestro.
+              </p>
+            </div>
+            <a
+              href={waLink()}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 block text-center text-sm text-muted underline-offset-2 hover:text-white hover:underline"
+            >
+              Prefiero consultar por WhatsApp antes
+            </a>
           </div>
         </div>
       </section>

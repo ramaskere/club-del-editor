@@ -122,6 +122,11 @@ body {
 
 .btn-primary:hover {
   background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 .chip {
