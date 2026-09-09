@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { site } from "@/lib/site";
 
 const faqs = [
   {
     q: "¿Club del Editor es un curso o un pack de presets?",
-    a: "Es una academia completa de edición, de principiante a avanzado. Los presets y recursos vienen incluidos para que apliques más rápido lo que aprendés, pero no son el único contenido.",
+    a: "Es un curso completo de edición en Adobe Premiere Pro, de principiante a avanzado. Incluye recursos de edición y certificado al finalizar.",
   },
   {
     q: "¿Es un solo pago o una suscripción?",
@@ -13,27 +14,31 @@ const faqs = [
   },
   {
     q: "¿El acceso es de por vida?",
-    a: "Sí. Acceso de por vida a las clases, los recursos incluidos y la comunidad de soporte.",
+    a: "Sí. Acceso de por vida a las clases, los recursos incluidos y las actualizaciones del curso.",
   },
   {
     q: "¿Las futuras actualizaciones están incluidas?",
-    a: "Sí. Cuando sumamos clases, técnicas o recursos nuevos, entran en tu acceso sin costo extra.",
+    a: "Sí. Cuando sumamos clases o recursos nuevos, entran en tu acceso sin costo extra.",
   },
   {
     q: "¿Necesito saber editar antes de entrar?",
-    a: "No. Podés empezar desde cero. Si ya tenés experiencia, entrás directo a los módulos avanzados o al programa que uses.",
+    a: "No. Empezás desde cero: instalación, espacio de trabajo, atajos y después el flujo completo de edición.",
   },
   {
-    q: "¿Qué programas se enseñan?",
-    a: "CapCut (PC y móvil), Premiere Pro, After Effects y DaVinci Resolve, con recursos adaptados a cada uno.",
+    q: "¿Qué programa se enseña?",
+    a: `El curso está enfocado en ${site.software}: de 0 a 100, más extras de máscaras, B-roll y plugins.`,
   },
   {
-    q: "¿Puedo usarlo si solo edito desde el móvil?",
-    a: "Sí. Hay un módulo específico de CapCut móvil, desde nivel inicial hasta técnicas más avanzadas.",
+    q: "¿Necesito tener Premiere Pro instalado?",
+    a: "Sí, vas a trabajar en Adobe Premiere Pro. En el módulo de instalación te guiamos para dejarlo listo.",
   },
   {
-    q: "¿Puedo usar los recursos en trabajos para clientes?",
-    a: "Sí, en tu contenido y en proyectos para clientes. No está permitida la reventa ni redistribuirlos como pack propio.",
+    q: "¿Puedo usar lo aprendido en trabajos para clientes?",
+    a: "Sí. El objetivo es que puedas editar contenido propio y también cobrar por editar a clientes.",
+  },
+  {
+    q: "¿Hay certificado?",
+    a: "Sí. Al completar el curso recibís el Course Completion Credential.",
   },
   {
     q: "¿Cuándo recibo el acceso?",
@@ -41,7 +46,7 @@ const faqs = [
   },
   {
     q: "¿Hay garantía?",
-    a: "Sí. Tenés 7 días para probar la formación. Si no es para vos, pedís el reembolso.",
+    a: `Sí. Tenés ${site.guaranteeDays} días para probar la formación. Si no es para vos, pedís el reembolso.`,
   },
 ];
 

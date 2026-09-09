@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { Countdown } from "@/components/Countdown";
 import { FaqList } from "@/components/FaqList";
 import { TrustBadges, TrustLine } from "@/components/TrustLine";
-import { checkoutLabel, site, stackTotal, waLink } from "@/lib/site";
+import { checkoutLabel, curriculum, site, stackTotal, waLink } from "@/lib/site";
 
 const brands = [
   "Creadores",
@@ -61,7 +61,7 @@ const steps = [
   {
     n: "02",
     title: "Aplicá",
-    copy: "Descargá presets y recursos e insertalos en tus proyectos. Arrastrar y soltar.",
+    copy: "Usá recursos de edición y las técnicas del curso en tus propios proyectos.",
   },
   {
     n: "03",
@@ -71,66 +71,33 @@ const steps = [
 ];
 
 const resourceTypes = [
-  "Subtítulos dinámicos",
-  "Color y LUTs",
-  "Objetos 3D",
-  "Transiciones",
-  "B-roll cinematográfico",
-  "Lens flares",
-  "Efectos de sonido",
-  "Música viral",
+  "Organización de proyecto",
+  "Cortes y ritmo",
+  "Colorización",
+  "Subtítulos automáticos",
+  "Zoom y efectos",
+  "SFX y música",
+  "Máscaras",
+  "B-roll profesional",
 ];
 
 const softwares = [
-  { name: "CapCut", meta: "PC y móvil" },
-  { name: "Premiere Pro", meta: "Adobe" },
-  { name: "After Effects", meta: "Adobe" },
-  { name: "DaVinci Resolve", meta: "Blackmagic" },
+  { name: "Adobe Premiere Pro", meta: "Curso completo de 0 a 100" },
+  { name: "Espacio de trabajo", meta: "Layout y flujo profesional" },
+  { name: "Atajos esenciales", meta: "Editá más rápido" },
+  { name: "Extras + plugins", meta: "Máscaras, B-roll y tools" },
 ];
 
 const includes = [
-  "Academia completa de cero a avanzado",
-  "Formación en CapCut, Premiere, After Effects y DaVinci",
-  `${site.resources} presets y recursos descargables`,
-  "Presets de subtítulos para cada programa",
-  "Comunidad privada y soporte",
-  "Agente de IA para guiones",
+  "Curso completo de Adobe Premiere Pro",
+  "Módulo Empieza por aquí (mentalidad + recursos)",
+  "Instalación y configuración paso a paso",
+  "De 0 a 100: cortes, color, subtítulos, zoom, SFX y export",
+  "Extras: máscaras, B-roll y mejores plugins",
+  "Recursos de edición incluidos",
   "Certificado de finalización",
-  "Nuevas clases y recursos incluidos",
+  "Nuevas clases incluidas al sumarse",
   "Acceso inmediato y de por vida",
-];
-
-const modules = [
-  {
-    title: "Primeros pasos y comunidad",
-    copy: "Conocé la academia, la comunidad y el recorrido según tu nivel.",
-    meta: "1 lección · ~10 min",
-  },
-  {
-    title: "Premiere Pro + After Effects",
-    copy: "De cero a motion: keyframes, zooms, glow, máscaras y gráficos premium.",
-    meta: "24 lecciones · ~10 h",
-  },
-  {
-    title: "CapCut para PC",
-    copy: "Cortes, ritmo, subtítulos, efectos, sonido y motion graphics.",
-    meta: "22 lecciones · ~9 h",
-  },
-  {
-    title: "CapCut para móvil",
-    copy: "Editá desde el teléfono aunque empieces de cero.",
-    meta: "6 lecciones · ~3 h",
-  },
-  {
-    title: "DaVinci Resolve",
-    copy: "Montaje, color, efectos, motion y tipografía animada.",
-    meta: "9 lecciones · ~3 h 30",
-  },
-  {
-    title: "Branding e identidad visual",
-    copy: "Un estilo reconocible para que tus videos no parezcan uno más.",
-    meta: "1 lección · ~25 min",
-  },
 ];
 
 const guarantees = [
@@ -140,7 +107,7 @@ const guarantees = [
   "Acceso de por vida",
   "Actualizaciones futuras incluidas",
   "Podés empezar sin experiencia",
-  "Editás desde móvil u ordenador",
+  "Trabajás en Adobe Premiere Pro",
 ];
 
 const testimonials = [
@@ -148,19 +115,19 @@ const testimonials = [
     name: "Lucía M.",
     role: "Creadora de contenido",
     quote:
-      "Pasé de editar 4 horas por video a terminar en menos de una. Los presets + las clases cambian el juego.",
+      "Pasé de pelearme con Premiere a terminar videos con ritmo, color y subtítulos sin trabarme.",
   },
   {
     name: "Martín R.",
     role: "Editor freelance",
     quote:
-      "Entré para CapCut y terminé cobrando más con Premiere. La comunidad me ayudó a cerrar clientes.",
+      "Los atajos + el flujo de cortes me hicieron cobrar más. Ahora entrego más rápido a clientes.",
   },
   {
     name: "Sofía A.",
     role: "Agencia",
     quote:
-      "Ordenamos el flujo del equipo con lo que aprendimos. Mismo look en todos los clientes, más rápido.",
+      "Ordenamos cómo armamos cada proyecto. Mismo estándar en todos los clientes, más limpio.",
   },
 ];
 
@@ -219,9 +186,9 @@ export default function Home() {
           </h1>
 
           <p className="animate-rise-2 mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-            Accedé a una academia completa con clases paso a paso, comunidad
-            privada y más de {site.resources} presets y recursos para aprender a
-            editar profesionalmente sin empezar cada video desde cero.
+            Curso completo de {site.software}: de 0 a 100, con mentalidad,
+            recursos, atajos, color, subtítulos, SFX y extras para editar
+            profesionalmente sin empezar cada video desde cero.
           </p>
 
           <div className="animate-rise-3 mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -518,14 +485,14 @@ export default function Home() {
           </div>
           <div className="mt-10 rounded-2xl border border-accent/40 bg-accent-soft p-8 text-center md:p-12">
             <p className="text-5xl font-extrabold text-accent md:text-7xl">
-              {site.resources}
+              {site.software}
             </p>
-            <p className="mt-2 text-white">recursos descargables incluidos</p>
+            <p className="mt-2 text-white">de 0 a 100 + extras incluidos</p>
             <p className="mx-auto mt-2 max-w-lg text-sm text-muted">
-              Overlays, lens flares, film burns, SFX, música, LUTs, objetos 3D y
-              fuentes.
+              Instalación, atajos, cortes, color, subtítulos, zoom, SFX, música,
+              máscaras, B-roll, plugins y certificado.
             </p>
-            <Cta className="mt-6">Quiero los {site.resources} recursos</Cta>
+            <Cta className="mt-6">Quiero dominar Premiere Pro</Cta>
           </div>
         </div>
       </section>
@@ -533,14 +500,14 @@ export default function Home() {
       {/* 11. MORE THAN PRESETS + SOFTWARE */}
       <section className="mx-auto max-w-6xl px-4 py-16 text-center md:px-6 md:py-24">
         <h2 className="mx-auto max-w-3xl text-3xl font-extrabold tracking-tight md:text-5xl">
-          Mucho más que un pack de presets
+          Un solo programa. Un flujo completo.
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-muted md:text-lg">
-          {site.brand} es una academia completa: formación + recursos +
-          comunidad + actualizaciones.
+          {site.brand} te lleva de la mentalidad del editor hasta exportar como
+          pro en {site.software}.
         </p>
         <h3 className="mt-14 text-2xl font-bold">
-          Aprendé con el programa que ya usás
+          Lo que vas a dominar dentro
         </h3>
         <div className="mt-6 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-4">
           {softwares.map((sw) => (
@@ -560,10 +527,10 @@ export default function Home() {
           </h2>
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             {[
-              ["Dashboard de la academia", "Rutas de cero a avanzado"],
-              ["Módulos por programa", "Clase a clase, en orden"],
-              ["Clases abiertas por dentro", "Prácticas y paso a paso"],
-              ["Comunidad y soporte", "Acceso inmediato y de por vida"],
+              ["Empieza por aquí", "Mentalidad, recursos y primeros pasos"],
+              ["Premiere listo para editar", "Instalación, workspace y atajos"],
+              ["De 0 a 100", "Cortes, color, subtítulos, zoom, SFX y export"],
+              ["Extras + certificado", "Máscaras, B-roll, plugins y credential"],
             ].map(([t, c]) => (
               <div
                 key={t}
@@ -729,20 +696,30 @@ export default function Home() {
       {/* 15. CURRICULUM */}
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
         <h2 className="mx-auto max-w-3xl text-center text-3xl font-extrabold tracking-tight md:text-5xl">
-          No comprás un pack suelto. Entrá a toda la academia {site.brand}
+          Temario real de {site.brand}
         </h2>
         <p className="mt-4 text-center text-muted">
-          {site.lessons} lecciones · ~{site.hours} · {site.resources} recursos ·
-          4 programas · comunidad
+          {site.lessons} lecciones en {site.software} · certificado incluido ·
+          más módulos en camino
         </p>
         <div className="mt-10 divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/10">
-          {modules.map((m) => (
+          {curriculum.map((m) => (
             <article
               key={m.title}
-              className="grid gap-2 bg-bg-elevated px-5 py-5 md:grid-cols-[1.4fr_1fr_auto] md:items-center"
+              className="grid gap-3 bg-bg-elevated px-5 py-5 md:grid-cols-[1.2fr_1.4fr_auto] md:items-start"
             >
-              <h3 className="text-lg font-semibold">{m.title}</h3>
-              <p className="text-sm text-muted">{m.copy}</p>
+              <div>
+                <h3 className="text-lg font-semibold">{m.title}</h3>
+                <p className="mt-1 text-sm text-muted">{m.copy}</p>
+              </div>
+              <ul className="space-y-1 text-sm text-white/75">
+                {m.lessons.map((lesson) => (
+                  <li key={lesson} className="flex gap-2">
+                    <span className="text-accent">•</span>
+                    {lesson}
+                  </li>
+                ))}
+              </ul>
               <p className="text-xs font-semibold tracking-wide text-accent uppercase md:text-right">
                 {m.meta}
               </p>
