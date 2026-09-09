@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-import { Syne, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const display = Syne({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-});
-
-const body = Inter({
+const inter = Inter({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -22,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${display.variable} ${body.variable} h-full`}>
+    <html lang="es" className={`${inter.variable} h-full`}>
       <body
         className="min-h-full antialiased"
         style={{ fontFamily: "var(--font-body), system-ui, sans-serif" }}

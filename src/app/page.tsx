@@ -187,9 +187,9 @@ export default function Home() {
             Master Nº1 en edición viral
           </div>
 
-          <h1 className="animate-rise-1 mt-7 max-w-3xl font-[family-name:var(--font-display)] text-4xl leading-[1.05] font-extrabold tracking-tight text-white md:text-6xl lg:text-7xl">
+          <h1 className="animate-rise-1 mt-7 max-w-2xl text-[2rem] leading-snug font-bold tracking-normal text-white sm:text-4xl sm:leading-snug md:max-w-3xl md:text-5xl md:leading-[1.2] lg:text-[3.25rem]">
             Aprendé edición viral y empezá a cobrar más por tus videos{" "}
-            <span className="text-shimmer">en solo 7 días</span>
+            <span className="text-gradient">en solo 7 días</span>
           </h1>
 
           <p className="animate-rise-2 mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
@@ -251,7 +251,7 @@ export default function Home() {
           <p className="mb-3 text-center text-xs font-semibold tracking-[0.2em] text-accent uppercase">
             Dale al play para comenzar
           </p>
-          <h2 className="mb-6 text-center font-[family-name:var(--font-display)] text-2xl font-bold md:text-4xl">
+          <h2 className="mb-6 text-center text-2xl font-bold md:text-4xl">
             Vas a editar a este nivel
           </h2>
         </Reveal>
@@ -300,7 +300,7 @@ export default function Home() {
                 sizes="(max-width: 768px) 50vw, 25vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-              <p className="absolute inset-x-0 bottom-0 p-3 font-[family-name:var(--font-display)] text-sm font-semibold md:p-4 md:text-base">
+              <p className="absolute inset-x-0 bottom-0 p-3 text-sm font-semibold md:p-4 md:text-base">
                 {card.title}
               </p>
             </article>
@@ -313,7 +313,7 @@ export default function Home() {
       <section className="px-4 py-10 text-center md:py-14">
         <CountUp
           value={2400}
-          className="font-[family-name:var(--font-display)] text-6xl font-extrabold tracking-tight text-accent md:text-8xl"
+          className="text-6xl font-extrabold tracking-tight text-accent md:text-8xl"
         />
         <p className="mt-3 text-lg text-white md:text-xl">
           alumnos ya están en {site.brand}
@@ -345,7 +345,7 @@ export default function Home() {
           <p className="mb-2 text-center text-xs font-semibold tracking-[0.2em] text-accent uppercase">
             Resultados reales
           </p>
-          <h2 className="mb-8 text-center font-[family-name:var(--font-display)] text-2xl font-extrabold md:text-4xl">
+          <h2 className="mb-8 text-center text-2xl font-extrabold md:text-4xl">
             Vas a editar a este nivel
           </h2>
         </Reveal>
@@ -380,7 +380,7 @@ export default function Home() {
       {/* 7. STORY */}
       <section id="academia" className="mx-auto max-w-3xl px-4 py-16 text-center md:px-6 md:py-24">
         <Reveal>
-        <h2 className="font-[family-name:var(--font-display)] text-3xl font-extrabold tracking-tight md:text-5xl">
+        <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
           Todo lo que me habría gustado tener cuando empecé a crear contenido
         </h2>
         </Reveal>
@@ -414,7 +414,7 @@ export default function Home() {
       {/* 8. 3 STEPS */}
       <section className="bg-bg-elevated py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <h2 className="mx-auto max-w-3xl text-center font-[family-name:var(--font-display)] text-3xl font-extrabold tracking-tight md:text-5xl">
+          <h2 className="mx-auto max-w-3xl text-center text-3xl font-extrabold tracking-tight md:text-5xl">
             De cero a una edición profesional, paso a paso
           </h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -427,7 +427,7 @@ export default function Home() {
                   {step.n}
                 </span>
                 <div className="mb-5 h-28 rounded-xl bg-gradient-to-br from-accent/35 to-gold-deep/15" />
-                <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold">
+                <h3 className="text-2xl font-bold">
                   {step.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
