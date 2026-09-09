@@ -8,6 +8,7 @@ import { Reveal } from "@/components/Reveal";
 import { SkillMarquee } from "@/components/SkillMarquee";
 import { TimelineMock } from "@/components/TimelineMock";
 import { TrustBadges, TrustLine } from "@/components/TrustLine";
+import { VsCompare } from "@/components/VsCompare";
 import { checkoutLabel, curriculum, site, stackTotal, waLink } from "@/lib/site";
 
 const brands = [
@@ -410,6 +411,8 @@ export default function Home() {
         </div>
         </Reveal>
       </section>
+
+      <VsCompare />
 
       {/* 8. 3 STEPS */}
       <section className="bg-bg-elevated py-16 md:py-24">
