@@ -118,22 +118,71 @@ const guarantees = [
 
 const testimonials = [
   {
-    name: "Lucía M.",
-    role: "Creadora de contenido",
+    name: "Milton P.",
+    role: "Alumno",
     quote:
       "Pasé de pelearme con Premiere a terminar videos con ritmo, color y subtítulos sin trabarme.",
   },
   {
-    name: "Martín R.",
-    role: "Editor freelance",
+    name: "Renzo L.",
+    role: "Alumno",
     quote:
-      "Los atajos + el flujo de cortes me hicieron cobrar más. Ahora entrego más rápido a clientes.",
+      "Los atajos + el flujo de cortes me hicieron entregar más rápido. Ahora cobro con más confianza.",
   },
   {
-    name: "Sofía A.",
-    role: "Agencia",
+    name: "Rama R.",
+    role: "Alumno",
     quote:
-      "Ordenamos cómo armamos cada proyecto. Mismo estándar en todos los clientes, más limpio.",
+      "Ordenamos cómo armamos cada proyecto. Mismo estándar, más limpio y profesional.",
+  },
+  {
+    name: "Ian B.",
+    role: "Alumno",
+    quote:
+      "De cero a exportar bien. Las clases de color y subtítulos me cambiaron el nivel al toque.",
+  },
+];
+
+const findInside = [
+  {
+    title: "Bienvenida",
+    copy: "Empezá el recorrido con el pie derecho",
+    image: "/comunidad/bienvenida.png",
+  },
+  {
+    title: "Mentalidad del editor",
+    copy: "Pensá como editor, no solo como operador",
+    image: "/comunidad/mentalidad.png",
+  },
+  {
+    title: "Recursos de edición",
+    copy: "Material listo para aplicar en tus proyectos",
+    image: "/comunidad/recursos.png",
+  },
+  {
+    title: "Primeros pasos",
+    copy: "Tu base para no trabarte al arrancar",
+    image: "/comunidad/primeros-pasos.png",
+  },
+  {
+    title: "Setup Premiere",
+    copy: "Instalación y configuración sin pelearte",
+    image: "/comunidad/setup.png",
+  },
+  {
+    title: "Atajos",
+    copy: "Editá más rápido desde el día uno",
+    image: "/comunidad/atajos.png",
+  },
+  {
+    title: "De 0 a 100",
+    copy: "Cortes, color, subtítulos, zoom, SFX y export",
+    image: "/comunidad/de-0-a-100.png",
+  },
+  {
+    title: "Extras + plugins",
+    copy: "Máscaras, B-roll y tools profesionales",
+    image: "/comunidad/plugins.png",
   },
 ];
 
@@ -198,26 +247,6 @@ export default function Home() {
             recursos, atajos, color, subtítulos, SFX y extras para editar
             profesionalmente sin empezar cada video desde cero.
           </p>
-
-          <div className="animate-rise-3 mt-8 flex flex-wrap items-center justify-center gap-3">
-            {[
-              `+${site.students} alumnos`,
-              "1 solo pago",
-              "Acceso de por vida",
-            ].map((label) => (
-              <span
-                key={label}
-                className="chip px-4 py-2 text-[11px] font-semibold tracking-wide text-white/90 uppercase"
-              >
-                {label}
-              </span>
-            ))}
-          </div>
-
-          <div className="animate-rise-3 mt-5 inline-flex items-center gap-2 rounded-xl border border-gold/50 bg-gold/5 px-4 py-2.5 text-sm text-white/90">
-            <span aria-hidden>📈</span>
-            Unite a la academia de mayor crecimiento en español.
-          </div>
 
           <div className="mt-8 w-full max-w-md">
             <Countdown />
@@ -378,40 +407,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. STORY */}
-      <section id="academia" className="mx-auto max-w-3xl px-4 py-16 text-center md:px-6 md:py-24">
-        <Reveal>
-        <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
-          Todo lo que me habría gustado tener cuando empecé a crear contenido
-        </h2>
-        </Reveal>
-        <Reveal delay={0.1}>
-        <p className="mt-6 text-base leading-relaxed text-muted md:text-lg">
-          Aprender edición suele ser un caos: tutoriales sueltos, recursos en
-          páginas que te cuestan mínimo 30€ al mes y horas intentando descubrir
-          cómo se ha creado cada efecto.
-        </p>
-        <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
-          Por eso reunimos en un mismo lugar todo lo que necesitás: clases paso
-          a paso en Premiere Pro, recursos de edición, atajos, color, subtítulos,
-          SFX y extras para resolver dudas mientras editás.
-        </p>
-        <p className="mt-6 text-lg font-semibold text-white">
-          Sin pagar suscripciones. Sin empezar cada proyecto desde cero.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          {["Aprendé", "Practicá", "Exportá como pro"].map((label) => (
-            <span
-              key={label}
-              className="chip px-4 py-2 text-sm font-medium text-white"
-            >
-              {label}
-            </span>
-          ))}
-        </div>
-        </Reveal>
-      </section>
-
       <VsCompare />
 
       {/* 8. 3 STEPS */}
@@ -443,52 +438,6 @@ export default function Home() {
           <p className="mt-8 text-center text-sm text-muted">
             Podés empezar desde cero o entrar directo en el nivel que necesites.
           </p>
-        </div>
-      </section>
-
-      {/* 9. STOP STARTING FROM ZERO */}
-      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-2 md:items-center md:px-6 md:py-24">
-        <div>
-          <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
-            Dejá de empezar cada video desde cero
-          </h2>
-          <p className="mt-5 text-muted">
-            Aprendés cómo se construye una edición profesional y tenés los
-            recursos para aplicar cada técnica mucho más rápido.
-          </p>
-          <p className="mt-4 text-lg font-semibold text-white">
-            Lo que antes te llevaba 3 horas, ahora lo resolvés en 10 minutos.
-          </p>
-          <ol className="mt-8 space-y-4">
-            {[
-              ["Aplicás el preset", "Arrastrás el recurso sobre tu clip."],
-              ["Personalizás", "Ajustás color, ritmo y estilo a tu video."],
-              ["Resultado final", "Acabado profesional en minutos."],
-            ].map(([t, c], i) => (
-              <li key={t} className="flex gap-4 border-l-2 border-accent/50 pl-4">
-                <span className="font-semibold text-accent">0{i + 1}</span>
-                <div>
-                  <p className="font-medium text-white">{t}</p>
-                  <p className="text-sm text-muted">{c}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-          <div className="mt-8">
-            <Cta>Quiero dejar de editar a mano</Cta>
-            <p className="mt-3 text-xs text-muted">
-              Pago único de {site.price} {site.currency} · Acceso de por vida
-            </p>
-          </div>
-        </div>
-        <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10">
-          <Image
-            src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80"
-            alt="Timeline de edición"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
         </div>
       </section>
 
@@ -550,36 +499,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 12. WHAT YOU GET INSIDE */}
-      <section className="bg-bg-elevated py-16 md:py-24">
+      {/* 12. LO QUE VAS A ENCONTRAR */}
+      <section id="academia" className="bg-bg-elevated py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <h2 className="mx-auto max-w-3xl text-center text-3xl font-extrabold tracking-tight md:text-5xl">
-            Esto es exactamente lo que encontrás al entrar
-          </h2>
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
-            {[
-              ["Empieza por aquí", "Mentalidad, recursos y primeros pasos"],
-              ["Premiere listo para editar", "Instalación, workspace y atajos"],
-              ["De 0 a 100", "Cortes, color, subtítulos, zoom, SFX y export"],
-              ["Extras + certificado", "Máscaras, B-roll, plugins y credential"],
-            ].map(([t, c]) => (
-              <div
-                key={t}
-                className="relative min-h-48 overflow-hidden rounded-2xl border border-white/10"
-              >
-                <Image
-                  src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                  fill
-                  className="object-cover opacity-40"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/50 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <p className="text-xl font-semibold">{t}</p>
-                  <p className="text-sm text-muted">{c}</p>
-                </div>
-              </div>
+          <Reveal>
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-extrabold tracking-tight md:text-5xl">
+              Lo que vas a encontrar
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-muted">
+              Miniaturas reales de las clases dentro de {site.brand}. Esto es lo
+              que ves al entrar.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+            {findInside.map((item, i) => (
+              <Reveal key={item.title} delay={(i % 4) * 0.06}>
+                <article className="card-shine group overflow-hidden rounded-2xl border border-accent/20 bg-bg">
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
+                  </div>
+                  <div className="p-3 md:p-4">
+                    <p className="text-sm font-semibold text-white md:text-base">
+                      {item.title}
+                    </p>
+                    <p className="mt-1 text-xs text-muted md:text-sm">
+                      {item.copy}
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
             ))}
           </div>
           <div className="mt-8 text-center">
@@ -597,7 +551,7 @@ export default function Home() {
           Comunidad privada para dudas, feedback e inspiración. Academia viva:
           nuevas clases sin volver a pagar.
         </p>
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
           {testimonials.map((t) => (
             <blockquote
               key={t.name}
