@@ -2,7 +2,6 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { Countdown } from "@/components/Countdown";
 import { FaqList } from "@/components/FaqList";
-import { StickyCta } from "@/components/StickyCta";
 import { TrustBadges, TrustLine } from "@/components/TrustLine";
 import { checkoutLabel, site, stackTotal, waLink } from "@/lib/site";
 
@@ -188,7 +187,7 @@ function Cta({
 
 export default function Home() {
   return (
-    <main className="pb-28">
+    <main>
       {/* Top urgency bar */}
       <div className="border-b border-accent/30 bg-accent/10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-2 px-4 py-2.5 md:flex-row md:gap-4">
@@ -205,28 +204,6 @@ export default function Home() {
           </a>
         </div>
       </div>
-
-      {/* Nav */}
-      <header className="relative z-20 mx-auto flex max-w-6xl items-center justify-between px-4 py-5 md:px-6">
-        <a href="#inicio" className="text-sm font-extrabold tracking-[0.16em] uppercase">
-          {site.brand}
-        </a>
-        <nav className="hidden items-center gap-7 text-sm text-white/70 md:flex">
-          <a href="#academia" className="hover:text-white">
-            La academia
-          </a>
-          <a href="#recursos" className="hover:text-white">
-            Recursos
-          </a>
-          <a href="#alumnos" className="hover:text-white">
-            Alumnos
-          </a>
-          <a href="#faq" className="hover:text-white">
-            FAQ
-          </a>
-        </nav>
-        <Cta className="!px-4 !py-2.5 text-xs md:text-sm">{checkoutLabel}</Cta>
-      </header>
 
       {/* 1. HERO */}
       <section id="inicio" className="relative hero-glow overflow-hidden">
@@ -854,8 +831,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-
-      <StickyCta />
     </main>
   );
 }
