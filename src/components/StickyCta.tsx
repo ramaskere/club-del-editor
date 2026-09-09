@@ -6,8 +6,8 @@ import { Countdown } from "@/components/Countdown";
 export function StickyCta() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:px-4 md:pb-4">
-      <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-accent/40 bg-[#0c0816]/95 shadow-[0_12px_40px_rgba(124,92,255,0.35)] backdrop-blur-md">
-        <div className="border-b border-white/10 bg-accent/15 px-3 py-1.5">
+      <div className="glow-box mx-auto max-w-3xl overflow-hidden rounded-2xl border border-accent/40 bg-black/95 backdrop-blur-md">
+        <div className="border-b border-accent/20 bg-accent/10 px-3 py-1.5">
           <Countdown className="!justify-center scale-90 origin-center" />
         </div>
         <div className="flex items-center justify-between gap-3 px-4 py-3 md:px-5">
@@ -16,7 +16,7 @@ export function StickyCta() {
               <span className="text-xs text-muted line-through">
                 {site.priceWas}
               </span>
-              <p className="text-lg font-bold text-white md:text-xl">
+              <p className="text-lg font-bold text-accent md:text-xl">
                 {site.price} {site.currency}
               </p>
             </div>
@@ -26,7 +26,7 @@ export function StickyCta() {
           </div>
           <a
             href={site.checkoutUrl}
-            className="btn-primary shrink-0 animate-[pulse_2.4s_ease-in-out_infinite] px-4 py-2.5 text-sm md:px-6 md:py-3"
+            className="btn-primary shrink-0 px-4 py-2.5 text-sm md:px-6 md:py-3"
           >
             <span className="md:hidden">Entrar</span>
             <span className="hidden md:inline">{checkoutLabel}</span>

@@ -296,7 +296,7 @@ export default function Home() {
         <h2 className="mb-6 text-center text-2xl font-bold md:text-3xl">
           Vas a editar a este nivel
         </h2>
-        <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-bg-soft shadow-[0_0_80px_rgba(124,92,255,0.2)]">
+        <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-bg-soft shadow-[0_0_80px_rgba(245,197,24,0.25)]">
           <Image
             src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1600&q=80"
             alt="Preview de la academia"
@@ -311,7 +311,7 @@ export default function Home() {
             className="absolute inset-0 flex items-center justify-center"
             aria-label="Reproducir video"
           >
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-accent text-white shadow-[0_0_40px_rgba(124,92,255,0.6)] md:h-20 md:w-20">
+            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-accent text-accent-ink shadow-[0_0_40px_rgba(245,197,24,0.7)] md:h-20 md:w-20">
               <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7 fill-current md:h-8 md:w-8">
                 <path d="M8 5v14l11-7z" />
               </svg>
@@ -457,7 +457,7 @@ export default function Home() {
                 <span className="absolute top-4 right-4 text-sm font-bold text-accent">
                   {step.n}
                 </span>
-                <div className="mb-5 h-28 rounded-xl bg-gradient-to-br from-accent/30 to-pink/10" />
+                <div className="mb-5 h-28 rounded-xl bg-gradient-to-br from-accent/35 to-gold-deep/15" />
                 <h3 className="text-2xl font-bold">{step.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
                   {step.copy}
@@ -696,7 +696,7 @@ export default function Home() {
 
           <div
             id="comprar"
-            className="scroll-mt-28 rounded-3xl border border-accent/50 bg-bg p-6 shadow-[0_0_60px_rgba(124,92,255,0.22)] md:p-8"
+            className="glow-box scroll-mt-28 rounded-3xl border border-accent/50 bg-bg p-6 md:p-8"
           >
             <div className="mb-4 rounded-xl border border-gold/40 bg-gold/10 px-3 py-2 text-center text-xs font-medium text-gold">
               Oferta limitada · Cierra el {site.deadlineLabel}

@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #07040f;
-  --bg-elevated: #100a1c;
-  --bg-soft: #161022;
-  --line: rgba(255, 255, 255, 0.12);
+  --bg: #050505;
+  --bg-elevated: #0c0c0c;
+  --bg-soft: #141414;
+  --line: rgba(255, 215, 64, 0.14);
   --text: #ffffff;
-  --muted: #a8a0b8;
-  --accent: #7c5cff;
-  --accent-hover: #6a4aef;
-  --accent-soft: rgba(124, 92, 255, 0.18);
-  --pink: #e879f9;
-  --gold: #f0b429;
+  --muted: #a3a3a3;
+  --accent: #f5c518;
+  --accent-hover: #ffd84a;
+  --accent-soft: rgba(245, 197, 24, 0.14);
+  --accent-ink: #0a0a0a;
+  --gold: #ffd700;
+  --gold-deep: #c9a227;
+  --neon: #ffe566;
   --background: var(--bg);
   --foreground: var(--text);
 }
@@ -27,8 +29,10 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
-  --color-pink: var(--pink);
+  --color-accent-ink: var(--accent-ink);
   --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-neon: var(--neon);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
 }
@@ -48,8 +52,8 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 45%, transparent);
-  color: white;
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+  color: var(--accent-ink);
 }
 
 @keyframes rise {
@@ -68,10 +72,28 @@ body {
   100% {
     opacity: 1;
     transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.7);
   }
   50% {
-    opacity: 0.45;
-    transform: scale(0.85);
+    opacity: 0.55;
+    transform: scale(0.9);
+    box-shadow: 0 0 12px 2px rgba(245, 197, 24, 0.45);
+  }
+}
+
+@keyframes neon-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(245, 197, 24, 0.45),
+      0 0 18px rgba(245, 197, 24, 0.35),
+      0 8px 32px rgba(245, 197, 24, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(255, 230, 102, 0.7),
+      0 0 28px rgba(255, 214, 0, 0.55),
+      0 10px 40px rgba(245, 197, 24, 0.4);
   }
 }
 
@@ -97,15 +119,16 @@ body {
 
 .hero-glow {
   background:
-    radial-gradient(ellipse 70% 50% at 50% 35%, rgba(124, 92, 255, 0.22), transparent 60%),
-    radial-gradient(ellipse 50% 40% at 50% 80%, rgba(232, 121, 249, 0.08), transparent 55%);
+    radial-gradient(ellipse 70% 50% at 50% 30%, rgba(245, 197, 24, 0.2), transparent 58%),
+    radial-gradient(ellipse 55% 40% at 50% 75%, rgba(201, 162, 39, 0.1), transparent 55%);
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, #e879f9 0%, #a78bfa 45%, #7c5cff 100%);
+  background: linear-gradient(90deg, #ffe566 0%, #f5c518 40%, #c9a227 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  filter: drop-shadow(0 0 18px rgba(245, 197, 24, 0.45));
 }
 
 .btn-primary {
@@ -113,15 +136,15 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  background: var(--accent);
-  color: #fff;
-  font-weight: 600;
-  transition: background 0.2s ease, transform 0.2s ease;
-  box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.35), 0 8px 28px rgba(124, 92, 255, 0.35);
+  background: linear-gradient(180deg, #ffe566 0%, #f5c518 55%, #d4a017 100%);
+  color: var(--accent-ink);
+  font-weight: 700;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  animation: neon-pulse 2.8s ease-in-out infinite;
 }
 
 .btn-primary:hover {
-  background: var(--accent-hover);
+  filter: brightness(1.08);
   transform: translateY(-1px);
 }
 
@@ -131,8 +154,14 @@ body {
 
 .chip {
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(245, 197, 24, 0.28);
+  background: rgba(245, 197, 24, 0.06);
+}
+
+.glow-box {
+  box-shadow:
+    0 0 0 1px rgba(245, 197, 24, 0.25),
+    0 0 40px rgba(245, 197, 24, 0.18);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -140,7 +169,8 @@ body {
   .animate-rise-1,
   .animate-rise-2,
   .animate-rise-3,
-  .dot-live {
+  .dot-live,
+  .btn-primary {
     animation: none;
   }
 }
