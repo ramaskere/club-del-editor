@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #050505;
-  --bg-elevated: #0c0c0c;
-  --bg-soft: #141414;
+  --bg: #030303;
+  --bg-elevated: #0a0a0a;
+  --bg-soft: #121212;
   --line: rgba(255, 215, 64, 0.14);
   --text: #ffffff;
-  --muted: #a3a3a3;
+  --muted: #9a9a9a;
   --accent: #f5c518;
   --accent-hover: #ffd84a;
   --accent-soft: rgba(245, 197, 24, 0.14);
@@ -49,6 +49,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -97,6 +98,61 @@ body {
   }
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes playhead {
+  0% {
+    left: 8%;
+  }
+  100% {
+    left: 88%;
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes clip-grow {
+  from {
+    transform: scaleX(0.35);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 .animate-rise {
   animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -119,8 +175,9 @@ body {
 
 .hero-glow {
   background:
-    radial-gradient(ellipse 70% 50% at 50% 30%, rgba(245, 197, 24, 0.2), transparent 58%),
-    radial-gradient(ellipse 55% 40% at 50% 75%, rgba(201, 162, 39, 0.1), transparent 55%);
+    radial-gradient(ellipse 70% 50% at 50% 28%, rgba(245, 197, 24, 0.22), transparent 58%),
+    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(201, 162, 39, 0.08), transparent 50%),
+    radial-gradient(ellipse 45% 35% at 80% 65%, rgba(255, 229, 102, 0.06), transparent 50%);
 }
 
 .text-gradient {
@@ -129,6 +186,22 @@ body {
   background-clip: text;
   color: transparent;
   filter: drop-shadow(0 0 18px rgba(245, 197, 24, 0.45));
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #c9a227 0%,
+    #ffe566 25%,
+    #fff3b0 50%,
+    #ffe566 75%,
+    #c9a227 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4.5s linear infinite;
 }
 
 .btn-primary {
@@ -141,6 +214,26 @@ body {
   font-weight: 700;
   transition: transform 0.2s ease, filter 0.2s ease;
   animation: neon-pulse 2.8s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+}
+
+.btn-primary:hover::after {
+  transform: translateX(120%);
 }
 
 .btn-primary:hover {
@@ -156,6 +249,7 @@ body {
   border-radius: 9999px;
   border: 1px solid rgba(245, 197, 24, 0.28);
   background: rgba(245, 197, 24, 0.06);
+  backdrop-filter: blur(8px);
 }
 
 .glow-box {
@@ -164,13 +258,77 @@ body {
     0 0 40px rgba(245, 197, 24, 0.18);
 }
 
+.film-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.timeline-playhead {
+  animation: playhead 6.5s ease-in-out infinite alternate;
+}
+
+.float-y {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+.clip-grow {
+  transform-origin: left center;
+  animation: clip-grow 2.8s ease-in-out infinite alternate;
+}
+
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::before {
+  content: "";
+  position: absolute;
+  inset: -40% auto auto -40%;
+  width: 40%;
+  height: 180%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 229, 102, 0.12),
+    transparent
+  );
+  transform: rotate(20deg);
+  transition: left 0.6s ease;
+  left: -40%;
+}
+
+.card-shine:hover::before {
+  left: 120%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-rise,
   .animate-rise-1,
   .animate-rise-2,
   .animate-rise-3,
   .dot-live,
-  .btn-primary {
+  .btn-primary,
+  .marquee-track,
+  .timeline-playhead,
+  .float-y,
+  .clip-grow,
+  .text-shimmer {
     animation: none;
   }
 }

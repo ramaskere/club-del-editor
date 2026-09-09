@@ -1,7 +1,12 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { AmbientOrbs } from "@/components/AmbientOrbs";
 import { Countdown } from "@/components/Countdown";
+import { CountUp } from "@/components/CountUp";
 import { FaqList } from "@/components/FaqList";
+import { Reveal } from "@/components/Reveal";
+import { SkillMarquee } from "@/components/SkillMarquee";
+import { TimelineMock } from "@/components/TimelineMock";
 import { TrustBadges, TrustLine } from "@/components/TrustLine";
 import { checkoutLabel, curriculum, site, stackTotal, waLink } from "@/lib/site";
 
@@ -154,7 +159,9 @@ function Cta({
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative">
+      <div className="film-grain" aria-hidden />
+      <AmbientOrbs />
       {/* Top urgency bar */}
       <div className="border-b border-accent/30 bg-accent/10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-2 px-4 py-2.5 md:flex-row md:gap-4">
@@ -180,9 +187,9 @@ export default function Home() {
             Master Nº1 en edición viral
           </div>
 
-          <h1 className="animate-rise-1 mt-7 max-w-3xl text-4xl leading-[1.08] font-extrabold tracking-tight text-white md:text-6xl">
+          <h1 className="animate-rise-1 mt-7 max-w-3xl font-[family-name:var(--font-display)] text-4xl leading-[1.05] font-extrabold tracking-tight text-white md:text-6xl lg:text-7xl">
             Aprendé edición viral y empezá a cobrar más por tus videos{" "}
-            <span className="text-gradient">en solo 7 días</span>
+            <span className="text-shimmer">en solo 7 días</span>
           </h1>
 
           <p className="animate-rise-2 mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
@@ -229,18 +236,27 @@ export default function Home() {
               ¿Dudas? Escribime por WhatsApp
             </a>
           </div>
+
+          <div className="mt-12 w-full max-w-2xl float-y">
+            <TimelineMock />
+          </div>
         </div>
       </section>
 
+      <SkillMarquee />
+
       {/* 2. VIDEO HERO */}
-      <section className="mx-auto max-w-4xl px-4 pb-16 md:px-6 md:pb-24">
-        <p className="mb-3 text-center text-xs font-semibold tracking-[0.2em] text-accent uppercase">
-          Dale al play para comenzar
-        </p>
-        <h2 className="mb-6 text-center text-2xl font-bold md:text-3xl">
-          Vas a editar a este nivel
-        </h2>
-        <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-bg-soft shadow-[0_0_80px_rgba(245,197,24,0.25)]">
+      <section className="mx-auto max-w-4xl px-4 py-16 md:px-6 md:py-24">
+        <Reveal>
+          <p className="mb-3 text-center text-xs font-semibold tracking-[0.2em] text-accent uppercase">
+            Dale al play para comenzar
+          </p>
+          <h2 className="mb-6 text-center font-[family-name:var(--font-display)] text-2xl font-bold md:text-4xl">
+            Vas a editar a este nivel
+          </h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+        <div className="card-shine relative aspect-video overflow-hidden rounded-2xl border border-accent/25 bg-bg-soft shadow-[0_0_80px_rgba(245,197,24,0.25)]">
           <Image
             src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1600&q=80"
             alt="Preview de la academia"
@@ -265,44 +281,47 @@ export default function Home() {
         <p className="mt-3 text-center text-xs text-muted">
           Reemplazá este video por tu VSL / demo real
         </p>
+        </Reveal>
       </section>
 
       {/* 3. FOUR SHOWCASE CARDS */}
       <section className="mx-auto max-w-6xl px-4 pb-16 md:px-6">
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-          {showcaseCards.map((card) => (
+          {showcaseCards.map((card, i) => (
+            <Reveal key={card.title} delay={i * 0.08}>
             <article
-              key={card.title}
-              className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/10"
+              className="card-shine group relative aspect-[3/4] overflow-hidden rounded-2xl border border-accent/20"
             >
               <Image
                 src={card.image}
                 alt={card.title}
                 fill
-                className="object-cover"
+                className="object-cover transition duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 50vw, 25vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <p className="absolute inset-x-0 bottom-0 p-3 text-sm font-semibold md:p-4 md:text-base">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+              <p className="absolute inset-x-0 bottom-0 p-3 font-[family-name:var(--font-display)] text-sm font-semibold md:p-4 md:text-base">
                 {card.title}
               </p>
             </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* 4. BIG COUNTER */}
       <section className="px-4 py-10 text-center md:py-14">
-        <p className="text-6xl font-extrabold tracking-tight text-accent md:text-8xl">
-          +{site.students}
-        </p>
+        <CountUp
+          value={2400}
+          className="font-[family-name:var(--font-display)] text-6xl font-extrabold tracking-tight text-accent md:text-8xl"
+        />
         <p className="mt-3 text-lg text-white md:text-xl">
           alumnos ya están en {site.brand}
         </p>
         <p className="mx-auto mt-3 max-w-xl text-sm text-muted">
           Unite a una de las academias de edición en español de mayor
-          crecimiento. Nuestros alumnos han editado para creadores de más de
-          500.000 seguidores.
+          crecimiento. Aprendé Premiere Pro de 0 a 100 y empezá a cobrar por
+          editar.
         </p>
       </section>
 
@@ -322,17 +341,19 @@ export default function Home() {
 
       {/* 6. WALL OF REELS */}
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
-        <p className="mb-2 text-center text-xs font-semibold tracking-[0.2em] text-accent uppercase">
-          Resultados reales
-        </p>
-        <h2 className="mb-8 text-center text-2xl font-extrabold md:text-4xl">
-          Vas a editar a este nivel
-        </h2>
+        <Reveal>
+          <p className="mb-2 text-center text-xs font-semibold tracking-[0.2em] text-accent uppercase">
+            Resultados reales
+          </p>
+          <h2 className="mb-8 text-center font-[family-name:var(--font-display)] text-2xl font-extrabold md:text-4xl">
+            Vas a editar a este nivel
+          </h2>
+        </Reveal>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 md:gap-4">
           {reels.map((reel, i) => (
+            <Reveal key={`${reel.views}-${i}`} delay={(i % 5) * 0.05}>
             <article
-              key={`${reel.views}-${i}`}
-              className="group relative aspect-[9/16] overflow-hidden rounded-xl border border-white/10"
+              className="card-shine group relative aspect-[9/16] overflow-hidden rounded-xl border border-accent/15"
             >
               <Image
                 src={reel.image}
@@ -342,8 +363,8 @@ export default function Home() {
                 sizes="(max-width: 640px) 50vw, 20vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
-              <span className="absolute top-1/2 left-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
-                <svg viewBox="0 0 24 24" className="ml-0.5 h-4 w-4 fill-white">
+              <span className="absolute top-1/2 left-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent/25 backdrop-blur-sm transition group-hover:scale-110">
+                <svg viewBox="0 0 24 24" className="ml-0.5 h-4 w-4 fill-accent">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </span>
@@ -351,15 +372,19 @@ export default function Home() {
                 ▶ {reel.views}
               </p>
             </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* 7. STORY */}
       <section id="academia" className="mx-auto max-w-3xl px-4 py-16 text-center md:px-6 md:py-24">
-        <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">
+        <Reveal>
+        <h2 className="font-[family-name:var(--font-display)] text-3xl font-extrabold tracking-tight md:text-5xl">
           Todo lo que me habría gustado tener cuando empecé a crear contenido
         </h2>
+        </Reveal>
+        <Reveal delay={0.1}>
         <p className="mt-6 text-base leading-relaxed text-muted md:text-lg">
           Aprender edición suele ser un caos: tutoriales sueltos, recursos en
           páginas que te cuestan mínimo 30€ al mes y horas intentando descubrir
@@ -367,15 +392,14 @@ export default function Home() {
         </p>
         <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
           Por eso reunimos en un mismo lugar todo lo que necesitás: clases paso
-          a paso, presets de subtítulos, animaciones, transiciones, B-roll,
-          efectos, música viral, sonidos, LUTs y una comunidad donde resolver
-          dudas.
+          a paso en Premiere Pro, recursos de edición, atajos, color, subtítulos,
+          SFX y extras para resolver dudas mientras editás.
         </p>
         <p className="mt-6 text-lg font-semibold text-white">
           Sin pagar suscripciones. Sin empezar cada proyecto desde cero.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          {["Aprendé", "Descargá", "Aplicá con 1 clic"].map((label) => (
+          {["Aprendé", "Practicá", "Exportá como pro"].map((label) => (
             <span
               key={label}
               className="chip px-4 py-2 text-sm font-medium text-white"
@@ -384,29 +408,33 @@ export default function Home() {
             </span>
           ))}
         </div>
+        </Reveal>
       </section>
 
       {/* 8. 3 STEPS */}
       <section className="bg-bg-elevated py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <h2 className="mx-auto max-w-3xl text-center text-3xl font-extrabold tracking-tight md:text-5xl">
+          <h2 className="mx-auto max-w-3xl text-center font-[family-name:var(--font-display)] text-3xl font-extrabold tracking-tight md:text-5xl">
             De cero a una edición profesional, paso a paso
           </h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {steps.map((step) => (
+            {steps.map((step, i) => (
+              <Reveal key={step.n} delay={i * 0.1}>
               <article
-                key={step.n}
-                className="relative overflow-hidden rounded-2xl border border-white/10 bg-bg p-6"
+                className="card-shine relative overflow-hidden rounded-2xl border border-accent/20 bg-bg p-6"
               >
                 <span className="absolute top-4 right-4 text-sm font-bold text-accent">
                   {step.n}
                 </span>
                 <div className="mb-5 h-28 rounded-xl bg-gradient-to-br from-accent/35 to-gold-deep/15" />
-                <h3 className="text-2xl font-bold">{step.title}</h3>
+                <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold">
+                  {step.title}
+                </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
                   {step.copy}
                 </p>
               </article>
+              </Reveal>
             ))}
           </div>
           <p className="mt-8 text-center text-sm text-muted">
